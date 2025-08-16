@@ -1,1 +1,121 @@
 @import "tailwindcss";
+
+/* Throxy Design System - Dark theme with purple accents inspired by Langbase */
+@theme {
+  /* Override default colors with dark theme */
+  --color-*: initial;
+  
+  /* Dark theme colors using oklch */
+  --color-background: oklch(0.04 0 0);
+  --color-foreground: oklch(0.98 0 0);
+  
+  --color-card: oklch(0.06 0 0);
+  --color-card-foreground: oklch(0.98 0 0);
+  
+  --color-popover: oklch(0.06 0 0);
+  --color-popover-foreground: oklch(0.98 0 0);
+  
+  /* Purple brand colors */
+  --color-primary: oklch(0.66 0.25 280);
+  --color-primary-foreground: oklch(0.98 0 0);
+  --color-primary-glow: oklch(0.80 0.28 280);
+  
+  --color-secondary: oklch(0.15 0 0);
+  --color-secondary-foreground: oklch(0.98 0 0);
+  
+  --color-muted: oklch(0.10 0 0);
+  --color-muted-foreground: oklch(0.65 0 0);
+  
+  --color-accent: oklch(0.66 0.25 280);
+  --color-accent-foreground: oklch(0.98 0 0);
+  
+  --color-destructive: oklch(0.60 0.25 20);
+  --color-destructive-foreground: oklch(0.98 0 0);
+  
+  --color-border: oklch(0.15 0 0);
+  --color-input: oklch(0.15 0 0);
+  --color-ring: oklch(0.66 0.25 280);
+  
+  /* Custom radius */
+  --radius-lg: 0.75rem;
+  --radius-md: calc(0.75rem - 2px);
+  --radius-sm: calc(0.75rem - 4px);
+  
+  /* Custom shadows with purple glow */
+  --shadow-elegant: 0 10px 30px -10px oklch(0.66 0.25 280 / 0.3);
+  --shadow-glow: 0 0 40px oklch(0.80 0.28 280 / 0.4);
+  
+  /* Animation keyframes */
+  --animate-accordion-down: accordion-down 0.2s ease-out;
+  --animate-accordion-up: accordion-up 0.2s ease-out;
+  
+  @keyframes accordion-down {
+    from {
+      height: 0;
+    }
+    to {
+      height: var(--radix-accordion-content-height);
+    }
+  }
+  
+  @keyframes accordion-up {
+    from {
+      height: var(--radix-accordion-content-height);
+    }
+    to {
+      height: 0;
+    }
+  }
+}
+
+@layer base {
+  :root {
+    /* Custom design tokens as CSS variables (not theme variables) */
+    --gradient-primary: linear-gradient(135deg, oklch(0.66 0.25 280), oklch(0.70 0.28 300));
+    --gradient-hero: linear-gradient(135deg, oklch(0.66 0.25 280) 0%, oklch(0.70 0.28 300) 50%, oklch(0.75 0.30 320) 100%);
+    --gradient-subtle: linear-gradient(180deg, oklch(0.04 0 0) 0%, oklch(0.08 0.05 280) 100%);
+    
+    /* Transitions */
+    --transition-smooth: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    --transition-bounce: all 0.5s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+  }
+  
+  * {
+    border-color: var(--color-border);
+  }
+  
+  body {
+    background-color: var(--color-background);
+    color: var(--color-foreground);
+  }
+}
+
+@layer components {
+  .bg-gradient-primary {
+    background-image: var(--gradient-primary);
+  }
+  
+  .bg-gradient-hero {
+    background-image: var(--gradient-hero);
+  }
+  
+  .bg-gradient-subtle {
+    background-image: var(--gradient-subtle);
+  }
+  
+  .shadow-elegant {
+    box-shadow: var(--shadow-elegant);
+  }
+  
+  .shadow-glow {
+    box-shadow: var(--shadow-glow);
+  }
+  
+  .transition-smooth {
+    transition: var(--transition-smooth);
+  }
+  
+  .transition-bounce {
+    transition: var(--transition-bounce);
+  }
+}
